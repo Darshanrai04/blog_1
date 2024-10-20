@@ -6,7 +6,7 @@
     <title>Document</title>
     <?php include('includes/css.php') ?> 
 
-sdfgsdfg
+sdfg
 </head>
 <body>
    <?php include('includes/nav.php') ?> 
