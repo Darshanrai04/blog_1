@@ -5,7 +5,7 @@ $password=$_POST["password"];
 $sqli=mysqli_query($mysqli,"SELECT * FROM `user` WHERE email='$email' AND password='$password'");
 $count=mysqli_num_rows($sqli);
 
-if($count>0){ //0 =false ,1
+if($count>0){ //0 =false ,1=true
     echo "<script>alert('loged inn  Success')</script>";
     $fetch=mysqli_fetch_array($sqli);
     $_SESSION['username']=$fetch['name'];
