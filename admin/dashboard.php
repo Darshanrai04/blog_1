@@ -15,7 +15,7 @@ if(!isset($_SESSION['user_id'])&&empty($_SESSION['user_id'])){
 </head>
 
 <body>
-<?php include("../includes/nav.php");?>
+<?php include("./includes/nav.php");?>
 
 
 
