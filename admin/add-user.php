@@ -4,6 +4,19 @@ if(!isset($_SESSION['user_id'])&&empty($_SESSION['user_id'])){
     header('location: index.php');
     exit;
 }
+
+if(isset($_post['submit'])){
+    $name=$_POST['name'];
+    $email=$_POST['email'];
+    $phone=$_POST['phone'];
+    $password=$_POST['password'];
+    $gender=$_POST['gender'];
+    $about=$_POST['about'];
+    $sql="INSERT INTO `user` (`id`, `name`, `email`, `phone`, `password`, `gender`, `about`) VALUES ('', '$name', '$email', '$phone', '$password', '$gender', '$about')";
+    $query= mysqli_query($mysqli,$sql);
+    
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,6 +87,7 @@ if(!isset($_SESSION['user_id'])&&empty($_SESSION['user_id'])){
                 </div>
 
             </div>
+            <a href="" classs="" ></a>
         
         </form>
     </div>
