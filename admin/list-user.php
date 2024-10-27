@@ -4,6 +4,16 @@ if(!isset($_SESSION['user_id'])&&empty($_SESSION['user_id'])){
     header('location: index.php');
     exit;
 }
+if(isset($_GET['did'])){
+    $id=$_GET['did'];
+     $sql= "DELETE FROM user WHERE `user`.`id` = '$id'";
+    $query= mysqli_query($mysqli, $sql);
+    if($query){
+        header('location: list-user.php');
+    }
+
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +37,7 @@ if(!isset($_SESSION['user_id'])&&empty($_SESSION['user_id'])){
 <td><?php echo $row['name'] ?></td>
 <td><?php echo $row['email'] ?></td>
 <td><?php echo $row['gender'] ?></td>
-<td><a href="" class="btn btn-info btn-sm ps-2">Edit</a> <a href="" class="btn btn-sm btn-danger"> Delete</a></td>
+<td><a href="add-user.php?eid=<?php  echo $row['id'] ?>" class="btn btn-info btn-sm ps-2">Edit</a> <a href="list-user.php?did=<?php  echo $row['id'] ?>" class="btn btn-sm btn-danger"> Delete</a></td>
  </tr>
  <?php  }
 
