@@ -15,7 +15,7 @@
             Posts
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Add Post</a></li>
+            <li><a class="dropdown-item" href="addpost.php">Add Post</a></li>
             <li><a class="dropdown-item" href="#">List Post</a></li>
             
           </ul>
