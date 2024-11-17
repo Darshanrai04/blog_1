@@ -57,10 +57,6 @@ $sqli="INSERT INTO `add_post` (`id`, `title`, `content`, `category`, `thumbnail`
     $query= mysqli_query($mysqli,$sqli);
 
 
-
-
-
-
 }
 
 
