@@ -4,57 +4,62 @@ if(isset($_POST['submit'])){
     $title=$_POST["title"];
     $content=$_POST["content"];
     $category=$_POST["category"];
+    
     // $thumbnail=$_POST["thumbnail"];
 
-    // file upload things start
+    // // file upload things start
+    // echo $_FILES['thumbnail'];exit;
+    // if (isset($_FILES['thumbnail']) && $_FILES['thumbnail']['error'] == 0) {
+    //     // Get the file details
+    //     $fileTmpPath = $_FILES['thumbnail']['tmp_name'];
+    //     $fileName = $_FILES['thumbnail']['name'];
+    //     $fileSize = $_FILES['thumbnail']['size'];
+    //     $fileType = $_FILES['thumbnail']['type'];
 
-    if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
-        // Get the file details
-        $fileTmpPath = $_FILES['thumbnail']['tmp_name'];
-        $fileName = $_FILES['thumbnail']['name'];
-        $fileSize = $_FILES['thumbnail']['size'];
-        $fileType = $_FILES['thumbnail']['type'];
+    //     // Set a directory where the file will be uploaded
+    //     $uploadDir = 'uploads/';
 
-        // Set a directory where the file will be uploaded
-        $uploadDir = 'uploads/';
+    //     // Make sure the uploads directory exists
+    //     if (!is_dir($uploadDir)) {
+    //         mkdir($uploadDir, 0777, true);  // Create the directory if it doesn't exist
+    //     }
 
-        // Make sure the uploads directory exists
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true);  // Create the directory if it doesn't exist
-        }
+    //     // Generate a unique name for the uploaded file to avoid overwriting
+    //     $uniqueFileName = uniqid() . '_' . basename($fileName);
+    //     $uploadFilePath = $uploadDir . $uniqueFileName;
 
-        // Generate a unique name for the uploaded file to avoid overwriting
-        $uniqueFileName = uniqid() . '_' . basename($fileName);
-        $uploadFilePath = $uploadDir . $uniqueFileName;
+    //     // Validate the file type (optional)
+    //     $allowedFileTypes = ['image/jpeg', 'image/png'];
+    //     if (!in_array($fileType, $allowedFileTypes)) {
+    //         echo "Error: Only JPG, PNG,  files are allowed.";
+    //         exit;
+    //     }
 
-        // Validate the file type (optional)
-        $allowedFileTypes = ['image/jpeg', 'image/png'];
-        if (!in_array($fileType, $allowedFileTypes)) {
-            echo "Error: Only JPG, PNG,  files are allowed.";
-            exit;
-        }
+    //     // Check file size (optional, for example: 5MB max)
+    //     if ($fileSize > 10 * 1024 * 1024) {
+    //         echo "Error: File size is too large. Max allowed size is 10MB.";
+    //         exit;
+    //     }
 
-        // Check file size (optional, for example: 5MB max)
-        if ($fileSize > 10 * 1024 * 1024) {
-            echo "Error: File size is too large. Max allowed size is 10MB.";
-            exit;
-        }
+    //     // Move the uploaded file to the target directory
+    //     if (move_uploaded_file($fileTmpPath, $uploadFilePath)) {
+    //         echo "File successfully uploaded: " . $uploadFilePath;
+    //     } else {
+    //         echo "Error: There was an issue with the file upload.";
+    //     }
+    // } else {
+    //     // echo "Error: " . $_FILES['thumbnail']['error'];
+//print_r($category);exit;
 
-        // Move the uploaded file to the target directory
-        if (move_uploaded_file($fileTmpPath, $uploadFilePath)) {
-            echo "File successfully uploaded: " . $uploadFilePath;
-        } else {
-            echo "Error: There was an issue with the file upload.";
-        }
-    } else {
-        // echo "Error: " . $_FILES['thumbnail']['error'];
-    }
+    // }
 
+    $category=implode(',',$category);
 
-    // file upload thing end
     $user_id=$_SESSION['user_id'];
-$sqli="INSERT INTO `add_post` (`id`, `title`, `content`, `category`, `thumbnail`, `user_id`) VALUES ('', '$title', '$content', '$category', '$fileName ','$user_id')";
+$sqli="INSERT INTO `add_post` (`id`, `title`, `content`, `category`, `thumbnail`, `user_id`) VALUES ('', '$title', '$content', '$category', '','$user_id')";
     $query= mysqli_query($mysqli,$sqli);
+   
+
 
 
 }
@@ -107,7 +112,7 @@ $sqli="INSERT INTO `add_post` (`id`, `title`, `content`, `category`, `thumbnail`
                     </div>
                     <div class="col-md-6">
                         <label for="">Category</label>
-                        <select name="category" id="" class="form-select select2" multiple required>
+                        <select name="category[]" id="" class="form-select select2" multiple required>
                             <option value="Education">Education</option>
                             <option value="Travel">Travel</option>
                             <option value="Food">Food</option>
