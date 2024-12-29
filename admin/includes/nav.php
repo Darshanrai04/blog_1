@@ -1,3 +1,6 @@
+<?php
+include('function.php')
+?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -16,7 +19,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="addpost.php">Add Post</a></li>
-            <li><a class="dropdown-item" href="#">List Post</a></li>
+            <li><a class="dropdown-item" href="listpost.php">List Post</a></li>
             
           </ul>
         </li>
